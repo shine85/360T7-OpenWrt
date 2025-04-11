@@ -7,20 +7,7 @@ name: OpenWrt 360T7 Padavanonly-24.10
 on:
   repository_dispatch:
   workflow_dispatch:
-    inputs:
-      Cache:
-        description: '使用缓存加速 OpenWrt 编译 / Using cache to speed up OpenWrt compilation.'
-        required: true
-        default: 'true'
-        type: choice
-        options:
-          - 'true'
-          - 'false'
-      ssh:
-        description: '是否使用SSH连接到Actions'
-        required: false
-        type: boolean
-        default: false
+
 #  schedule:
 #    - cron: 0 8 * * 5
 
