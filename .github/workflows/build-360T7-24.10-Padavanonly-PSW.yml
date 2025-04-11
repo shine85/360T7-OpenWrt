@@ -7,7 +7,6 @@ name: OpenWrt 360T7 Padavanonly-24.10
 on:
   repository_dispatch:
   workflow_dispatch:
-
 #  schedule:
 #    - cron: 0 8 * * 5
 
@@ -98,13 +97,6 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
         #make defconfig
-        
-    - name: SSH 连接
-      uses: P3TERX/ssh2actions@v1.0.0
-      if: github.event.inputs.ssh == 'true'
-      env:
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
     - name: Download package
       id: package
@@ -143,7 +135,7 @@ jobs:
       run: |
         cd openwrt/bin/targets/*/*
         rm -rf packages
-        # rm -rf config.buildinfo
+        rm -rf config.buildinfo
         rm -rf feeds.buildinfo
         rm -rf sha256sums
         rm -rf version.buildinfo
